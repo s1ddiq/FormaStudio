@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Forma Studio",
+  title: "HafsLLC Studio",
   description: "Website creation agency",
 };
 
