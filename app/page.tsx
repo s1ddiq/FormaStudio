@@ -1,13 +1,10 @@
 import Link from "next/link";
 import {
-  ArrowRight,
   ArrowUpRight,
-  Check,
   CheckCircle2,
   Code2,
   Globe2,
   LayoutTemplate,
-  Mail,
   MonitorSmartphone,
   Search,
   ShieldCheck,
@@ -31,6 +28,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+
+const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
 
 const services = [
   {
@@ -121,7 +120,7 @@ function Logo() {
         f.
       </div>
       <span className="text-xl font-semibold tracking-tight text-white">
-        forma<span className="text-[#a5a8ff]">.</span>
+        Hafs<span className="text-[#a5a8ff]">LLC</span>
       </span>
     </Link>
   );
@@ -172,7 +171,7 @@ function Header() {
             className="border-white/10 bg-[#15161d] p-6"
           >
             <SheetHeader>
-              <SheetTitle className="text-left text-white">forma.</SheetTitle>
+              <SheetTitle className="text-left text-white">HafsLLC</SheetTitle>
             </SheetHeader>
             <nav className="mt-10 flex flex-col gap-6">
               {links.map((link) => (
@@ -537,7 +536,13 @@ function Contact() {
               size="lg"
               className="mt-10 h-13 rounded-full bg-[#a5a8ff] px-9 font-semibold text-[#101116] hover:bg-[#c0c2ff]"
             >
-              <a href="mailto:hello@example.com?subject=Website%20Project%20Inquiry">
+              <a
+                href={
+                  CONTACT_EMAIL
+                    ? `mailto:${CONTACT_EMAIL}?subject=Website%20Project%20Inquiry`
+                    : "mailto:?subject=Website%20Project%20Inquiry"
+                }
+              >
                 {/* <Mail className="mr-2 size-4" /> */}
                 Request a Free Quote
                 {/* <ArrowUpRight className="ml-2 size-4" /> */}
@@ -560,7 +565,7 @@ function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 md:flex-row lg:px-10">
         <Logo />
         <p className="text-sm text-zinc-500">
-          © {new Date().getFullYear()} Forma Studio. All rights reserved.
+          © 2026 HafsLLC. All rights reserved.
         </p>
         <Link
           href="#home"
