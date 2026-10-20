@@ -1,5 +1,8 @@
 import { list } from "@vercel/blob";
 import { notFound } from "next/navigation";
+import { connection } from "next/server";
+
+export const instant = false;
 
 type Website = {
   name: string;
@@ -13,6 +16,8 @@ type Props = {
 };
 
 export default async function ClientWebsitePage({ params }: Props) {
+  await connection();
+
   const { clientWebsite } = await params;
 
   if (!/^[a-zA-Z0-9][a-zA-Z0-9-]{0,79}$/.test(clientWebsite)) {
@@ -26,6 +31,7 @@ export default async function ClientWebsitePage({ params }: Props) {
     limit: 10,
     token: process.env.BLOB_READ_WRITE_TOKEN,
   });
+
   const blob = blobs.find((item) => item.pathname === pathname);
 
   if (!blob) {

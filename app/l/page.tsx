@@ -4,6 +4,7 @@ import { isWebsiteAdmin } from "@/lib/website-admin";
 import { login, logout } from "./actions";
 import WebsiteForm from "./website-form";
 
+export const instant = false;
 export const metadata: Metadata = {
   title: "Website dashboard",
   robots: {
