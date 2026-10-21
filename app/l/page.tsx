@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { isWebsiteAdmin } from "@/lib/website-admin";
 import { login, logout } from "./actions";
 import WebsiteForm from "./website-form";
+import WebsiteManager from "./website-manager";
+import { connection } from "next/server";
 
 export const instant = false;
 export const metadata: Metadata = {
@@ -18,6 +20,8 @@ type Props = {
 };
 
 export default async function Page({ searchParams }: Props) {
+  await connection();
+
   const authenticated = await isWebsiteAdmin();
 
   if (!authenticated) {
@@ -90,7 +94,12 @@ export default async function Page({ searchParams }: Props) {
           </form>
         </header>
 
-        <WebsiteForm />
+        <WebsiteManager />
+
+        <section className="space-y-5 rounded-xl border border-border bg-card p-6 text-card-foreground">
+          <h2 className="text-xl font-semibold">Create website</h2>
+          <WebsiteForm />
+        </section>
       </div>
     </main>
   );
